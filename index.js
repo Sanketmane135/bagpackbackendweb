@@ -28,7 +28,7 @@ mongoose.connect(process.env.MONGO_URL)
   .catch(err => console.log("Error connecting to database", err));
 
 // Start server regardless
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log(`Server is running on port ${process.env.PORT}`);
 });
 
