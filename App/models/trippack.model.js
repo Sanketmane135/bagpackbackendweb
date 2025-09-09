@@ -13,6 +13,7 @@ const tripSchema = new Schema(
   {
     tripName: { type: String, required: true },
     location: { type: String, required: true },
+    imageurl: { type: String, required: true },
     durationDays: { type: Number, required: true },
     pricePerPerson: { type: Number, required: true },
     description: { type: String, required: true },

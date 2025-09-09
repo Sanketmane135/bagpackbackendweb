@@ -4,6 +4,7 @@ const { getpackages, findPackagesByEmail, addPackage } = require('../controllers
 const { getReviews, deleteReview } = require('../controllers/reviewcontroller');
 const { getTripPacks, findTripPackageById } = require('../controllers/builtpackcontroller');
 const { addCustomTrip, findCustomTripByEmail, getCustomTrips } = require('../controllers/customcontroller');
+const { addTripPack } = require('../controllers/trippackagecontroller');
 let bagpackRoutes = express.Router();
 
 
@@ -33,5 +34,7 @@ bagpackRoutes.post('/addCustom',addCustomTrip);
 bagpackRoutes.get('/getCustomTripById/:email',findCustomTripByEmail );
 
 bagpackRoutes.get('/getCustomTrips', getCustomTrips);
+
+bagpackRoutes.post('/addTrip', addTripPack);
 
 module.exports = bagpackRoutes;

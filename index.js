@@ -23,12 +23,17 @@ app.get('/', (req, res) => {
 });
 
 
-mongoose.connect(process.env.MONGO_URL)
-  .then(() => console.log("Connected to database"))
-  .catch(err => console.log("Error connecting to database", err));
-
-// Start server regardless
-app.listen(process.env.PORT, () => {
-  console.log(`Server is running on port ${process.env.PORT}`);
+mongoose.connect(process.env.MONGO_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => {
+  console.log("✅ Connected to database");
+  app.listen(process.env.PORT, () => {
+    console.log(`🚀 Server is running on port ${process.env.PORT}`);
+  });
+})
+.catch(err => {
+  console.error("❌ Error connecting to database:", err);
+  process.exit(1); // stop the app if DB connection fails
 });
-
