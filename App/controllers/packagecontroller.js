@@ -42,7 +42,17 @@ let findPackagesByEmail = async (req, res) => {
 
 let addPackage = async (req, res) => {
     try {
-        const { packName, adultsId, childId, name, phoneNO, starDate, acco, emailId, status } = req.body;
+        const { 
+            packName,
+             adultsId,
+              childId, 
+              name, 
+              phoneNO, 
+              starDate, 
+              acco, 
+              emailId, 
+              status 
+            } = req.body;
 
         // 1. Validate input
         if (!packName || !adultsId || !childId || !name || !phoneNO || !starDate || !acco || !emailId || !status) {
