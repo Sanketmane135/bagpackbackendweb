@@ -5,7 +5,16 @@ let addCustomTrip = async (req, res) => {
         const tripData = req.body;
 
         // Validate required fields
-        if (!tripData.dest || !tripData.adultNo || !tripData.childNo || !tripData.startDateNo || !tripData.endDateNO || !tripData.accommodationNO || !tripData.usermail || !tripData.status) {
+        if (!tripData.dest ||
+            !tripData.adultNo ||
+            !tripData.childNo || 
+            !tripData.startDateNo || 
+            !tripData.endDateNO || 
+            !tripData.accommodation || 
+            !tripData.usermail || 
+            !tripData.status || 
+            !tripData.tripType || 
+            !tripData.budget) {
             return res.status(400).send({ status: 0, message: "All fields are required" });
         }
         // Create and save the new trip
