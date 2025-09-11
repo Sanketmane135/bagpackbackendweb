@@ -51,11 +51,15 @@ let addPackage = async (req, res) => {
               starDate, 
               acco, 
               emailId, 
+              transId,
+              totalAmount,
+              packageImg,
+              transStatus,
               status 
             } = req.body;
 
         // 1. Validate input
-        if (!packName || !adultsId || !childId || !name || !phoneNO || !starDate || !acco || !emailId || !status) {
+        if (!packName || !adultsId || !childId || !name || !phoneNO || !starDate || !acco || !emailId || !status || !totalAmount || !packageImg || !transId || !transStatus) {
             return res.status(400).json({ status: 0, message: "All fields are required" });
         }
 
@@ -69,6 +73,10 @@ let addPackage = async (req, res) => {
             starDate,
             acco,
             emailId,
+            transId,
+            transStatus,
+            totalAmount,
+            packageImg,
             status
         });
 

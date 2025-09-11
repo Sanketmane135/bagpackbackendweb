@@ -12,6 +12,10 @@ const packSchema = new Schema(
     starDate: { type: String, required: true },
     acco:{type: String, required: true},
     emailId:{type: String, required: true},
+    transId:{type:String, required:true},
+    transStatus:{type:String, required:true},
+    totalAmount:{type:String, required:true},
+    packageImg:{type:String,required:true},
     status:{type: String, required: true},
   }
 );
