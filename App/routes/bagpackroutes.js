@@ -1,6 +1,6 @@
 let express = require('express');
 const { userlist, findUserByEmail, addUser } = require('../controllers/usercontroller');
-const { getpackages, findPackagesByEmail, addPackage } = require('../controllers/packagecontroller');
+const { getpackages, findPackagesByEmail, addPackage, updatePackageStatus } = require('../controllers/packagecontroller');
 const { getReviews, deleteReview, addReviews } = require('../controllers/reviewcontroller');
 const { getTripPacks, findTripPackageById } = require('../controllers/builtpackcontroller');
 const { addCustomTrip, findCustomTripByEmail, getCustomTrips, changeCustTripStatus } = require('../controllers/customcontroller');
@@ -43,5 +43,7 @@ bagpackRoutes.post('/addTrip', addTripPack);
 bagpackRoutes.post('/qrgenerte',generateqr);
 
 bagpackRoutes.post('/custStatusChange',changeCustTripStatus);
+
+bagpackRoutes.post('/packageStatusChange',updatePackageStatus);
 
 module.exports = bagpackRoutes;

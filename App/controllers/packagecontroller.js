@@ -96,4 +96,28 @@ let addPackage = async (req, res) => {
     }
 }
 
-module.exports = {getpackages,findPackagesByEmail,addPackage};
+const updatePackageStatus = async (req, res) => {
+    try {
+        const { id, status } = req.body;
+        if (!id || !status) {
+            return res.status(400).json({ status: 0, message: "Package ID and status are required" });
+        }
+        const updatedPackage = await packModel.findByIdAndUpdate(id,
+            { status: status },
+            { new: true }
+        );
+        if (!updatedPackage) {
+            return res.status(404).json({ status: 0, message: "Package not found" });
+        }
+        return res.status(200).json({
+            status: 1,
+            message: "Package status updated successfully",
+            package: updatedPackage
+        });
+    } catch (err) {
+        console.error("Error updating package status:", err);
+        return res.status(500).json({ status: 0, message: "Server error while updating package status" });
+    }
+}
+
+module.exports = {getpackages,findPackagesByEmail,addPackage,updatePackageStatus};
