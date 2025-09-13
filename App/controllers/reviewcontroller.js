@@ -24,4 +24,16 @@ let deleteReview = async (req, res) => {
     }
 };
 
-module.exports = { getReviews, deleteReview };
+let addReviews = async (req, res) => {
+    try {
+        let { title, rating, user } = req.body;
+        let newReview = new reviewModel({ title, rating,user });
+        await newReview.save();
+        res.send({ status: 1, message: "Review added successfully" });
+    } catch (err) {
+        console.log("Error adding review", err);
+        res.status(500).send({ status: 0, message: "Error adding review" });
+    }
+}
+
+module.exports = { getReviews, deleteReview ,addReviews};

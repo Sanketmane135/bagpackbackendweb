@@ -1,9 +1,9 @@
 let express = require('express');
 const { userlist, findUserByEmail, addUser } = require('../controllers/usercontroller');
 const { getpackages, findPackagesByEmail, addPackage } = require('../controllers/packagecontroller');
-const { getReviews, deleteReview } = require('../controllers/reviewcontroller');
+const { getReviews, deleteReview, addReviews } = require('../controllers/reviewcontroller');
 const { getTripPacks, findTripPackageById } = require('../controllers/builtpackcontroller');
-const { addCustomTrip, findCustomTripByEmail, getCustomTrips } = require('../controllers/customcontroller');
+const { addCustomTrip, findCustomTripByEmail, getCustomTrips, changeCustTripStatus } = require('../controllers/customcontroller');
 const { addTripPack } = require('../controllers/trippackagecontroller');
 const { generateqr } = require('../controllers/qrgenerator');
 let bagpackRoutes = express.Router();
@@ -22,6 +22,8 @@ bagpackRoutes.get('/getbookedtrips/:email', findPackagesByEmail);
 
 bagpackRoutes.get('/getreviews', getReviews);
 
+bagpackRoutes.post('/addreview', addReviews);
+
 bagpackRoutes.delete('/deletereview/:id', deleteReview);
 
 bagpackRoutes.get('/builtpackages', getTripPacks);
@@ -39,5 +41,7 @@ bagpackRoutes.get('/getCustomTrips', getCustomTrips);
 bagpackRoutes.post('/addTrip', addTripPack);
 
 bagpackRoutes.post('/qrgenerte',generateqr);
+
+bagpackRoutes.post('/custStatusChange',changeCustTripStatus);
 
 module.exports = bagpackRoutes;

@@ -66,4 +66,29 @@ let findCustomTripByEmail = async (req, res) => {
     }
 };
 
-module.exports = { addCustomTrip ,getCustomTrips, findCustomTripByEmail};
+
+let changeCustTripStatus = async (req, res) => {
+    try {
+        const { id, status } = req.body;    
+        // Validate input
+        if (!id || !status) {
+            return res.status(400).json({ status: 0, message: "ID and status are required" });
+        }
+        // Update trip status
+        const updatedTrip = await tripModel.findByIdAndUpdate(id, { status }, { new: true });
+        if (!updatedTrip) {
+            return res.status(404).json({ status: 0, message: "Trip not found" });
+        }
+        // Send success response
+        return res.status(200).json({
+            status: 1,
+            message: "Trip status updated successfully",
+            trip: updatedTrip
+        });
+    } catch (err) {
+        console.error("Error updating trip status:", err);
+        return res.status(500).json({ status: 0, message: "Server error while updating trip status" });
+    }
+};
+
+module.exports = { addCustomTrip ,getCustomTrips, findCustomTripByEmail,changeCustTripStatus};
