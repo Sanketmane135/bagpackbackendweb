@@ -105,7 +105,7 @@ const updatePackageStatus = async (req, res) => {
         const updatedPackage = await packModel.findByIdAndUpdate(id,
             { status: status },
             { new: true }
-        );
+        );2
         if (!updatedPackage) {
             return res.status(404).json({ status: 0, message: "Package not found" });
         }

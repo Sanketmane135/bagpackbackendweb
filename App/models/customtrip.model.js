@@ -6,8 +6,8 @@ const tripSchema = new Schema(
     //define schema
   
     dest: { type: String, required: true },
-    adultNo: { type: Number, required: true },
-    childNo: { type: Number, required: true },
+    adultNo: { type: String, required: true },
+    childNo: { type: String, required: true },
     startDateNo: { type: String, required: true },
     endDateNO: { type: String, required: true },
     accommodation: { type: String, required: true },
