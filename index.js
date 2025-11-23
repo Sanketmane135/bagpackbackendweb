@@ -1,6 +1,7 @@
 let express = require('express');
 let mongoose = require('mongoose');
 let cors = require('cors');
+let helmet = require('helmet');
 require('dotenv').config();
 
 const bagpackroutes = require('./App/routes/bagpackroutes');
@@ -8,9 +9,11 @@ let app = express();
 
 
 app.use(express.json());
-app.use(cors());
 
-
+app.use(cors({
+  origin:["https://bagpacktrips.vercel.app", " http://localhost:5001" ],
+  credentials: true,
+}));
 
 app.use('/api/bagpack', bagpackroutes);
 

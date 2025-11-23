@@ -4,7 +4,7 @@ let addCustomTrip = async (req, res) => {
     try {
         const tripData = req.body;
 
-        // Validate required fields
+        
         if (!tripData.dest ||
             !tripData.adultNo ||
             !tripData.childNo || 
@@ -17,7 +17,7 @@ let addCustomTrip = async (req, res) => {
             !tripData.budget) {
             return res.status(400).send({ status: 0, message: "All fields are required" });
         }
-        // Create and save the new trip
+        
         const newTrip = new tripModel(tripData);
         await newTrip.save();
         res.status(201).send({ status: 1, message: "Custom trip added successfully", trip: newTrip });
@@ -42,18 +42,16 @@ let findCustomTripByEmail = async (req, res) => {
     try {
         const { email } = req.params;
 
-        // Validate input
+        
         if (!email) {
             return res.status(400).json({ status: 0, message: "Email is required" });
         }
 
-        // Find custom trips by user email
         const trips = await tripModel.find({ usermail: email }).lean();
         if (!trips || trips.length === 0) {
             return res.status(404).json({ status: 0, message: "No custom trips found for this email" });
         }
 
-        // Send success response
         return res.status(200).json({
             status: 1,
             message: "Custom trips retrieved successfully",
@@ -70,16 +68,16 @@ let findCustomTripByEmail = async (req, res) => {
 let changeCustTripStatus = async (req, res) => {
     try {
         const { id, status } = req.body;    
-        // Validate input
+        
         if (!id || !status) {
             return res.status(400).json({ status: 0, message: "ID and status are required" });
         }
-        // Update trip status
+        
         const updatedTrip = await tripModel.findByIdAndUpdate(id, { status }, { new: true });
         if (!updatedTrip) {
             return res.status(404).json({ status: 0, message: "Trip not found" });
         }
-        // Send success response
+        
         return res.status(200).json({
             status: 1,
             message: "Trip status updated successfully",

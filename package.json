@@ -4,10 +4,14 @@
     "bcrypt": "^6.0.0",
     "config": "^4.1.0",
     "cors": "^2.8.5",
+    "crypto": "^1.0.1",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "ioredis": "^5.8.2",
     "mongoose": "^8.17.1",
     "qrcode": "^1.5.4",
+    "razorpay": "^2.9.6",
     "react-toastify": "^11.0.5"
   },
   "devDependencies": {

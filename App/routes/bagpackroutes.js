@@ -6,6 +6,7 @@ const { getTripPacks, findTripPackageById } = require('../controllers/builtpackc
 const { addCustomTrip, findCustomTripByEmail, getCustomTrips, changeCustTripStatus } = require('../controllers/customcontroller');
 const { addTripPack } = require('../controllers/trippackagecontroller');
 const { generateqr } = require('../controllers/qrgenerator');
+const { payment } = require('../controllers/payment');
 let bagpackRoutes = express.Router();
 
 
@@ -45,5 +46,7 @@ bagpackRoutes.post('/qrgenerte',generateqr);
 bagpackRoutes.post('/custStatusChange',changeCustTripStatus);
 
 bagpackRoutes.post('/packageStatusChange',updatePackageStatus);
+
+bagpackRoutes.post('/payment',payment);
 
 module.exports = bagpackRoutes;
