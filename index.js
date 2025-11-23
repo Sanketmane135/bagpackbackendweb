@@ -10,10 +10,12 @@ let app = express();
 
 app.use(express.json());
 
-app.use(cors({
-  origin:["https://bagpacktrips.vercel.app", " http://localhost:5001" ],
+app.use(cors(
+  {
+  origin:["https://bagpacktrips.vercel.app", " http://localhost:3000"],
   credentials: true,
-}));
+  }
+));
 
 app.use('/api/bagpack', bagpackroutes);
 

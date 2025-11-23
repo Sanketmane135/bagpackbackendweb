@@ -4,20 +4,7 @@ const redis = require("../../redis");
 let getTripPacks = async (req, res) => {
     try {
 
-        const cached = await redis.get("builtInTrips");
-
-        if(cached){
-            return  res.send(
-                { 
-                    status: 1, 
-                    tripPacks:cached,
-                }
-            );
-        }
-
         let tripPacks = await tripPackModel.find();
-
-        redis.set("builtInTrips", JSON.stringify(tripPacks), "Ex", 600); 
 
         res.send({ status: 1, tripPacks: tripPacks });
 
