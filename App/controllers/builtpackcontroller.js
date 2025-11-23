@@ -1,13 +1,9 @@
 let tripPackModel =require('../models/trippack.model');
-const redis = require("../../redis");
 
 let getTripPacks = async (req, res) => {
     try {
-
         let tripPacks = await tripPackModel.find();
-
         res.send({ status: 1, tripPacks: tripPacks });
-
     } catch (err) {
         console.log("Error fetching trip packs", err);
         res.status(500).send({ status: 0, message: "Error fetching trip packs" });
